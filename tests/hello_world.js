@@ -1,23 +1,33 @@
 var register = new Register();
 
 var A = function(greet, user){
-    this.say = function(){
-        console.log(greet.concat(' ', user.name, '!'));
-    };
+    /**
+     * @param {String} greet
+     * @param {Object} user
+     */
+    this.greet = greet;
+    this.user = user;
 };
-
+A.prototype.say = function(){
+    console.log(this.greet.concat(' ', this.user.name, '!'));
+};
 var B = function (Greeter){
+    /**
+     * @param {A} Greeter
+     */
     this.greeter = new Greeter();
-    this.say = function(){
-        this.greeter.say();
-    };
+};
+B.prototype.greet = function(){
+    this.greeter.say();
 };
 
-register.registerClass('Greeter', A);
-register.registerClass('Main', B);
-register.registerInjection('greet', 'Hello ');
-register.registerInjection('user', {name : 'Ivan'});
-
+register.registerClasses(
+    ['Greeter', A],
+    ['Main', B]
+);
+register.registerInjections({
+    greet : 'Hello ',
+    user : {name : 'Ivan'}
+});
 var main = register.getInstance('Main');
-
-main.say();
+main.greet();
