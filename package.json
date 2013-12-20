@@ -21,7 +21,16 @@
     "injection",
     "framework"
   ],
-  "author": "",
+  "author": {
+      "name": "Ivan Doroshenko",
+      "email": "i.m.doroshenko@gmail.com"
+  },
+  "contributors": [
+      {
+          "name": "Yuriy Voziy",
+          "email": "yuretsz@gmail.com"
+      }
+  ],
   "license": "BSD",
   "readmeFilename": "README.md",
   "gitHead": "d236e9ae0f88c4f89e1f08bcaa50ea48f352c547"
